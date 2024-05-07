@@ -1,6 +1,10 @@
 const Main = () => {
   return (
-    <div>Main</div>
+    <section id="main">
+      <div className="flex justify-between">
+        
+      </div>
+    </section>
   )
 }
 

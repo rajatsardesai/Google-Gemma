@@ -1,4 +1,3 @@
-import Nav from "./components/Nav";
 import Main from "./sections/Main";
 import Sidebar from "./sections/Sidebar";
 

@@ -22,9 +22,10 @@ export default {
               opensans: ['Open Sans', 'sans-serif'],
           },
           colors: {
-              'primary': "linear-gradient(48deg, #446EFF 7.06%, #2E96FF 52.22%, #B1C5FF 107.6%, #B1C5FF 107.6%);",
-              'color-gray-100': "#b7becf",
-              'color-gray-200': "#dde3ea",
+              'primary': "linear-gradient(48deg, #446EFF 7.06%, #2E96FF 52.22%, #B1C5FF 107.6%, #B1C5FF 107.6%)",
+              'color-gray-50': "#f5f5f5",
+              'color-gray-100': "#eeeeee",
+              'color-gray-200': "#e0e0e0",
               'color-blue-100': "#f0f4f9"
           },
           boxShadow: {
