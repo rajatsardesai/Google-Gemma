@@ -3,11 +3,9 @@ import Sidebar from "./sections/Sidebar";
 
 export default function App() {
   return (
-    <main className="relative">
-      <div className="grid lg:grid-cols-2">
-        <section><Sidebar /></section>
-        <section className="padding"><Main /></section>
-      </div>
+    <main className="relative grid lg:grid-cols-2">
+      <section><Sidebar /></section>
+      <section><Main /></section>
     </main>
   )
 }
