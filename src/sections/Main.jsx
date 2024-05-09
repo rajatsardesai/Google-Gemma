@@ -12,7 +12,7 @@ const Main = () => {
   };
 
   return (
-    <section id="main" className="flex flex-col h-screen p-4">
+    <section id="main" className="bg-white dark:bg-color-dark-100 flex flex-col h-screen p-4">
       <div className="flex flex-col flex-none">
         <MainNav />
       </div>
@@ -22,7 +22,7 @@ const Main = () => {
             Hello, XYZ
             <span className="block text-gray-300">How can I help you today?</span>
           </h1>
-          <p className="font-opensans text-sm font-medium leading-5 py-4">Your conversations are processed by human reviewers to improve the technologies powering Gemini Apps. Don't enter anything you wouldn't want reviewed or used.</p>
+          <p className="font-opensans dark:text-white text-sm font-medium leading-5 py-4">Your conversations are processed by human reviewers to improve the technologies powering Gemini Apps. Don't enter anything you wouldn't want reviewed or used.</p>
 
           <div className="relative overflow-x-auto h-[208px]">
             <div className="flex items-center gap-3  absolute top-0 left-0">
@@ -36,24 +36,24 @@ const Main = () => {
         </div>
       </div>
 
-      <div className="relative flex items-center w-full">
+      <div className="relative flex self-center w-full max-w-[890px]">
         <Input type="text" placeholder="Type your prompt here..." className="py-5" />
-        <div className="absolute right-3 flex items-center">
+        <div className="absolute top-1 right-3 flex items-center">
           <button className="m-4" onClick={() => onToggleItems(setToggleInputItems)}>
-            <img src={verticalEllipsis} alt="new chat icon" className="w-[17px] h-[17px]" />
+            <img src={verticalEllipsis} alt="new chat icon" className="w-[17px] h-[17px] dark:invert" />
           </button>
           <button className="m-4">
-            <img src={send} alt="new chat icon" width={17} height={17} />
+            <img src={send} alt="new chat icon" width={17} height={17} className="dark:invert" />
           </button>
         </div>
         {
           toggleInputItems && (
-            <div className="absolute right-12 bottom-full mt-1 z-10 bg-white border border-gray-300 rounded-md shadow-lg">
-              <button className="flex items-center w-full py-2 px-4 hover:bg-gray-100 m-4">
-                <img src={image} alt="new chat icon" width={17} height={17} />
+            <div className="absolute right-12 bottom-full mt-1 z-10 bg-white dark:bg-color-dark-300 rounded-md shadow-lg">
+              <button className="flex justify-center items-center w-full hover:bg-gray-100 hover:dark:bg-color-dark-400 px-6 py-5">
+                <img src={image} alt="new chat icon" width={17} height={17} className="dark:invert" />
               </button>
-              <button className="flex items-center w-full py-2 px-4 hover:bg-gray-100 m-4">
-                <img src={mic} alt="new chat icon" width={17} height={17} />
+              <button className="flex justify-center items-center w-full hover:bg-gray-100 hover:dark:bg-color-dark-400 px-6 py-5">
+                <img src={mic} alt="new chat icon" width={17} height={17} className="dark:invert" />
               </button>
             </div>
           )
