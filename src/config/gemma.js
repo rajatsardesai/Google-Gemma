@@ -1,7 +1,6 @@
-const APIKEY = "AIzaSyBkRarcLubdPPA6qrdvIXW6Ggw60sAjSi4"
-
 // node --version # Should be >= 18
 // npm install @google/generative-ai
+const APIKEY =`${process.env.APIKEY}`
 
 import {
     GoogleGenerativeAI,
