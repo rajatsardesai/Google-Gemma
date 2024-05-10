@@ -1,14 +1,10 @@
-import { useState } from "react"
+import { useContext } from "react";
 import { activity, add, chat, chevronDown, chevronLeft, chevronRight, folder, help, nightMode, settings } from "../assets/icons";
 import { Button, Input, List, SideBarNav } from "../components";
+import { Context } from "../context/Context";
 
 const Sidebar = () => {
-  const [toggleChats, setToggleChats] = useState(false);
-  const [toggleMenu, setToggleMenu] = useState(true);
-
-  const onToggleItems = (setItem) => {
-    setItem((toggle) => !toggle);
-  };
+  const { toggleChats, setToggleChats, toggleMenu, setToggleMenu, onToggleItems } = useContext(Context);
 
   return (
     <section id="sidebar" className={`bg-white dark:bg-color-dark-100 max-lg:absolute flex max-lg:left-0 max-lg:top-0 flex-col justify-between z-50 ${toggleMenu ? 'w-0 lg:w-[68px] lg:px-2 lg:py-6 lg:bg-color-gray-50 dark:bg-color-dark-200' : 'w-[250px] sm:w-[350px] p-4'} h-screen transition-all`}>

@@ -1,15 +1,27 @@
-import { useState } from "react";
+import { useContext, useEffect } from "react";
 import { chevronLeft, chevronRight, dayMode, nightMode } from "../assets/icons";
 import { headerLogo } from "../assets/images";
 import { Button } from "../components";
+import { Context } from "../context/Context";
 
 const SideBarNav = ({ onToggle, onToggleItems, setToggleMenu }) => {
-    const [isDark, setIsDark] = useState(true);
+    const { isDark, setIsDark } = useContext(Context);
 
+    // Update localStorage whenever theme changes
     const darkModeHandler = () => {
-        setIsDark((dark) => !dark);
-        document.documentElement.classList.toggle("dark");
-    }
+        const newIsDark = !isDark;
+        setIsDark(newIsDark);
+        localStorage.setItem("theme", newIsDark ? "dark" : "");
+    };
+
+    useEffect(() => {
+        // Toggle dark mode class on <html> element
+        if (isDark) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [isDark]);
 
     return (
         <nav className={`relative flex flex-none items-center justify-between ${onToggle ? 'flex-col' : 'bg-color-gray-50 dark:bg-color-dark-200 px-4 py-2'} rounded-[20px]`}>
@@ -20,9 +32,9 @@ const SideBarNav = ({ onToggle, onToggleItems, setToggleMenu }) => {
                 <span className={`font-poppins text-md font-medium leading-5 text-color-gray-300 dark:text-white ${onToggle ? 'hidden' : 'block'}`}>My Chats</span>
             </div>
             <Button onClick={() => darkModeHandler()} className={`flex-none hover:bg-color-gray-200 hover:dark:bg-color-dark-300 py-3 dark:py-4 px-4 rounded-full ${onToggle ? 'hidden' : 'block'}`}>
-                <img src={isDark ? nightMode : dayMode} alt="header logo" width={15} height={15} />
+                <img src={!isDark ? nightMode : dayMode} alt="header logo" width={15} height={15} />
             </Button>
-            <Button onClick={() => onToggleItems(setToggleMenu)} className="absolute top-3 -right-16 flex-none hover:bg-color-gray-200 dark:hover:bg-color-dark-300 py-3 px-4 rounded-full">
+            <Button onClick={() => onToggleItems(setToggleMenu)} className="absolute max-lg:top-6 -right-16 flex-none hover:bg-color-gray-200 dark:hover:bg-color-dark-300 py-3 px-4 rounded-full">
                 <img src={onToggle ? chevronRight : chevronLeft} alt="header logo" width={11} height={11} className="dark:invert" />
             </Button>
         </nav>
