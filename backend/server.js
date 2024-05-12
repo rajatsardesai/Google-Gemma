@@ -5,7 +5,7 @@ const path = require('path');
 
 const app = express();
 app.use(cors());
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 const API_KEY = process.env.APIKEY; // Accessing API key from environment variable
 
 // Serve the static files from the frontend build directory
