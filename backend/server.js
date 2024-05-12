@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -12,7 +13,7 @@ app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Catch-all route to serve the frontend app
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/dist/index.html'));
 });
 
 app.get('/api/keys', async (req, res) => {
