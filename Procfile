@@ -1,1 +1,1 @@
-web: node backend/server.js
+web: cd frontend && npm run dev
