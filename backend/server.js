@@ -9,11 +9,11 @@ const PORT = process.env.PORT || 5000;
 const API_KEY = process.env.APIKEY; // Accessing API key from environment variable
 
 // Serve the static files from the frontend build directory
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Catch-all route to serve the frontend app
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/dist/index.html'));
 });
 
 app.get('/api/keys', async (req, res) => {
