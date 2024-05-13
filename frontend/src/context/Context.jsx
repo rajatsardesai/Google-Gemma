@@ -47,10 +47,12 @@ const ContextProvider = (props) => {
             if (prompt !== undefined) {
                 response = await runChat(prompt);
                 setRecentPrompt(prompt);
+                setLoading(false);
             } else {
                 setPrevPrompts(prev => [...prev, input]);
                 setRecentPrompt(input);
                 response = await runChat(input);
+                setLoading(false);
             };
             const formattedResponse = formatResponse(response);
 
