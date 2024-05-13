@@ -1,21 +1,32 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
+const { runChat } = require('./runChat');
 require('dotenv').config();
 const path = require('path');
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
+
 const PORT = process.env.PORT;
-const API_KEY = process.env.APIKEY; // Accessing API key from environment variable
 
 // Serve the static files from the frontend build directory
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-app.get('/api/keys', async (req, res) => {
+// Endpoint to handle POST requests for generating prompt
+app.post('/api/generate-prompt', async (req, res) => {
+    const prompt = req.body.prompt;
+    if (!prompt) {
+        return res.status(400).send('Prompt is required');
+    }
+
     try {
-        res.send({ apiKey: API_KEY });
+        const responseText = await runChat(prompt);
+        res.send(responseText);
     } catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
+        console.error(error);
+        res.status(500).send('An error occurred while generating response');
     }
 });
 
@@ -24,6 +35,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/dist/index.html'));
 });
 
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

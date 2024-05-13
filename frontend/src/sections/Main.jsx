@@ -67,8 +67,8 @@ const Main = () => {
             ) : (
               <>
                 <div className="max-h-full overflow-auto sm:[&::-webkit-scrollbar]:[width:6px] [&::-webkit-scrollbar-thumb]:bg-color-gray-200 dark:[&::-webkit-scrollbar-thumb]:bg-color-dark-300">
-                  <div className="flex max-sm:flex-col items-center gap-4">
-                    <div className="rounded-full border border-slate-500 dark:border-white p-2 ml-1">
+                  <div className="flex max-sm:flex-col md:items-center gap-4">
+                    <div className="w-fit rounded-full border border-slate-500 dark:border-white p-2 ml-1">
                       <img src={user} alt="user icon" width={15} height={15} className="dark:invert" />
                     </div>
                     <span className="font-opensans text-md font-medium leading-5 dark:text-white">{recentPrompt}</span>

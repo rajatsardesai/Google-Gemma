@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import runChat from "../config/gemma";
+import axios from 'axios';
 
 export const Context = createContext();
 
@@ -45,16 +45,14 @@ const ContextProvider = (props) => {
         try {
             let response;
             if (prompt !== undefined) {
-                response = await runChat(prompt);
+                response = await axios.post('/api/generate-prompt', { prompt });
                 setRecentPrompt(prompt);
-                setLoading(false);
             } else {
                 setPrevPrompts(prev => [...prev, input]);
                 setRecentPrompt(input);
-                response = await runChat(input);
-                setLoading(false);
+                response = await axios.post('/api/generate-prompt', { prompt: input });
             };
-            const formattedResponse = formatResponse(response);
+            const formattedResponse = formatResponse(response.data);
 
             // Split the response into words and delay appending each word
             const words = formattedResponse.split(" ");
@@ -64,8 +62,10 @@ const ContextProvider = (props) => {
         } catch (error) {
             console.error("Error fetching response:", error);
             setLoading(false);
+        } finally {
+            setLoading(false);
+            setInput("");
         }
-        setInput("");
     };
 
     // Global Function to toggle items

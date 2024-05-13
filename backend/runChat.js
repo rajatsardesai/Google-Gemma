@@ -1,32 +1,19 @@
 // node --version # Should be >= 18
 // npm install @google/generative-ai
 
-import {
+require('dotenv').config();
+const {
     GoogleGenerativeAI,
     HarmCategory,
     HarmBlockThreshold,
-} from "@google/generative-ai";
+} = require("@google/generative-ai");
 
 const MODEL_NAME = "gemini-1.5-pro-latest";
+const API_KEY = process.env.APIKEY; // Accessing API key from environment variable
 
-async function fetchData() {
-    try {
-        const response = await fetch('/api/keys');
-        const data = await response.json();
-        return data.apiKey;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
-
+// Function to run the chat and generate response based on a prompt
 async function runChat(prompt) {
-    const apiKey = await fetchData();
-    if (!apiKey) {
-        console.error('API key not available');
-        return null;
-    }
-
-    const genAI = new GoogleGenerativeAI(apiKey);
+    const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
     const generationConfig = {
@@ -67,4 +54,4 @@ async function runChat(prompt) {
     return response.text();
 }
 
-export default runChat;
+module.exports = { runChat };
