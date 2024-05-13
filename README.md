@@ -3,7 +3,7 @@
 Google Gemma is an AI chatbot built using the Google Gemini API and developed with React, Vite, and Node.js. It provides a seamless conversational experience powered by cutting-edge AI technology.
 
 ## Features
-**Minimizable Sidebar Menu**: Easily navigate through the app with a sidebar menu that can be minimized for a clutter-free interface.
+- **Minimizable Sidebar Menu**: Easily navigate through the app with a sidebar menu that can be minimized for a clutter-free interface.
 - **Dark Mode**: Enjoy a comfortable browsing experience even in low-light environments with the dark mode feature.
 - **Saved User Theme Preference**: Google Gemma remembers your preferred theme setting, storing the dark mode state in local storage for seamless continuity across sessions.
 - **Node Backend for Secure API Key Storage**: Ensure security by storing API keys securely on the server-side with a Node.js backend.
@@ -21,7 +21,10 @@ Google Gemma leverages the following technologies:
 ``` shell 
 git clone https://github.com/your_username/google-gemma.git
 ```
-2. Navigate to the project directory: `cd google-gemma`
+2. Navigate to the project directory: 
+``` shell 
+cd google-gemma
+```
 3. Install dependencies:
 ``` shell
 npm install
@@ -32,7 +35,7 @@ npm start
 ```
 5. Start frontend
 ``` shell
-npm run dev
+cd frontend && npm run dev
 ```
 6. Open your browser and visit `http://localhost:5173` to view Google Gemma in action.
 
@@ -51,4 +54,4 @@ I welcome contributions to Google Gemma! Here are a few areas where you can cont
 5. Submit a pull request with a clear description of your changes.
 
 ## Support
-If you encounter any issues or have questions regarding Google Gemma, feel free to [open an issue](https://github.com/your_username/google-gemma/issues). I am here to help!
+If you encounter any issues or have questions regarding Google Gemma, feel free to [open an issue](https://github.com/rajatsardesai/Google-Gemma/issues). I am here to help!
