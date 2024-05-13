@@ -39,7 +39,7 @@ const Main = () => {
   };
 
   return (
-    <section id="main" className="bg-white dark:bg-color-dark-100 flex flex-col h-screen p-4">
+    <section id="main" className="bg-white dark:bg-color-dark-100 flex flex-col h-dvh p-4">
       <div className="flex flex-col flex-none">
         <MainNav />
       </div>

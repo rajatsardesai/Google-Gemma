@@ -38,7 +38,7 @@ const Sidebar = () => {
   };
 
   return (
-    <section id="sidebar" className={`bg-white dark:bg-color-dark-100 max-lg:absolute flex max-lg:left-0 max-lg:top-0 flex-col justify-between z-50 ${toggleMenu ? 'w-0 lg:w-[68px] lg:px-2 lg:py-6 lg:bg-color-gray-50 dark:bg-color-dark-200' : 'w-[250px] sm:w-[350px] p-4'} h-screen transition-all`}>
+    <section id="sidebar" className={`bg-white dark:bg-color-dark-100 max-lg:absolute flex max-lg:left-0 max-lg:top-0 flex-col justify-between z-50 ${toggleMenu ? 'w-0 lg:w-[68px] lg:px-2 lg:py-6 lg:bg-color-gray-50 dark:bg-color-dark-200' : 'w-[250px] sm:w-[350px] p-4'} h-dvh transition-all`}>
       <SideBarNav onToggle={toggleMenu} setToggleMenu={setToggleMenu} onToggleItems={onToggleItems} />
 
       {!toggleMenu && (
