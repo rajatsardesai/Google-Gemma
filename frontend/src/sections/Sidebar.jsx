@@ -33,7 +33,10 @@ const Sidebar = () => {
 
   // Function to load prompt from chat history
   const loadPrompt = async (prompt) => {
-    setRecentPrompt(prompt)
+    if (window.innerWidth < 992) {
+      onToggleItems(setToggleMenu);
+    }
+    setRecentPrompt(prompt);
     await onSent(prompt);
   };
 

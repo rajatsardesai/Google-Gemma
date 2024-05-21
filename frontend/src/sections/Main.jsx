@@ -92,33 +92,34 @@ const Main = () => {
         </div>
       </div>
 
-
-      <div className="relative flex self-center w-full max-w-[890px]">
+      <div className="flex m-auto w-full max-w-[890px]">
         <Input type="text" placeholder="Type your prompt here..." onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => sendPrompt(e)} className="py-5" value={input} />
-        <div className="absolute top-1 right-3 flex items-center">
-          <Button className="m-4" onClick={() => onToggleItems(setToggleInputItems)}>
-            <img src={verticalEllipsis} alt="new chat icon" className="w-[17px] h-[17px] dark:invert" />
-          </Button>
+        <div className="flex items-center gap-6 bg-color-gray-100 dark:bg-color-dark-300 dark:text-white rounded-r-lg px-8">
+          <div className="relative">
+            <Button onClick={() => onToggleItems(setToggleInputItems)}>
+              <img src={verticalEllipsis} alt="new chat icon" className="w-[17px] h-[17px] dark:invert m-2" />
+            </Button>
+            {
+              toggleInputItems && (
+                <div className="absolute bottom-10 -left-4 z-10 bg-white dark:bg-color-dark-300 rounded-md shadow-lg w-14 flex flex-col gap-8 justify-center items-center p-4">
+                  <Button>
+                    <img src={image} alt="new chat icon" width={17} height={17} className="dark:invert" />
+                  </Button>
+                  <Button>
+                    <img src={mic} alt="new chat icon" width={17} height={17} className="dark:invert" />
+                  </Button>
+                </div>
+              )
+            }
+          </div>
           {
             input && (
-              <Button className="m-4" onClick={() => onSent(input)}>
-                <img src={send} alt="new chat icon" width={17} height={17} className="dark:invert" />
+              <Button onClick={() => onSent(input)}>
+                <img src={send} alt="new chat icon" width={17} height={17} className="dark:invert m-2" />
               </Button>
             )
           }
         </div>
-        {
-          toggleInputItems && (
-            <div className="absolute right-12 bottom-full mt-1 z-10 bg-white dark:bg-color-dark-300 rounded-md shadow-lg">
-              <Button className="flex justify-center items-center w-full hover:bg-gray-100 hover:dark:bg-color-dark-400 px-6 py-5">
-                <img src={image} alt="new chat icon" width={17} height={17} className="dark:invert" />
-              </Button>
-              <Button className="flex justify-center items-center w-full hover:bg-gray-100 hover:dark:bg-color-dark-400 px-6 py-5">
-                <img src={mic} alt="new chat icon" width={17} height={17} className="dark:invert" />
-              </Button>
-            </div>
-          )
-        }
       </div>
     </section>
   )
